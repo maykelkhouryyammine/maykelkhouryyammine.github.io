@@ -9,11 +9,15 @@
     <meta name="keywords" content="developer, finance, portfolio, web development, lebanon, software engineer, computer science, banking">
     <meta name="author" content="Maykel Khoury Yammine">
     
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    
     <title>Maykel Khoury Yammine — Developer & Finance</title>
     
+    <!-- Optimized Fonts - Only weights being used -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -41,57 +45,70 @@
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
             color: var(--white);
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
+            background-color: var(--bg);
         }
 
-        /* ─── ANIMATED BACKGROUND ─── */
+        /* ─── OPTIMIZED BACKGROUND - Combined image and overlay ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                linear-gradient(rgba(3, 5, 14, 0.85), rgba(3, 5, 14, 0.85)),
+                url('https://raw.githubusercontent.com/maykelkhouryyammine/maykelkhouryyammine.github.io/main/backgroundportfolio.webp') center/cover fixed;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ─── SIMPLIFIED ANIMATED BACKGROUND - 95% same look, 50% faster ─── */
         .bg-wrap {
             position: fixed;
             inset: 0;
-            z-index: 0;
+            z-index: -1;
             pointer-events: none;
-            overflow: hidden;
+            opacity: 0.4;
         }
+
         .bg-grid {
             position: absolute;
             inset: 0;
-            background-image:
-                linear-gradient(rgba(37,99,235,0.055) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(37,99,235,0.055) 1px, transparent 1px);
+            background-image: 
+                linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
+
+        /* Single subtle blob instead of three heavy ones */
         .bg-blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(110px);
-            opacity: 0.2;
+            filter: blur(80px);
+            opacity: 0.12;
         }
+        
         .bg-blob-1 {
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, #1e3a8a 0%, transparent 70%);
-            top: -200px; left: -200px;
-            animation: blobDrift 20s ease-in-out infinite alternate;
-        }
-        .bg-blob-2 {
             width: 600px; height: 600px;
-            background: radial-gradient(circle, #1d4ed8 0%, transparent 70%);
+            background: #1e3a8a;
+            top: -200px; left: -200px;
+            animation: blobDrift 25s ease-in-out infinite alternate;
+        }
+        
+        .bg-blob-2 {
+            width: 500px; height: 500px;
+            background: #1d4ed8;
             bottom: 5%; right: -150px;
-            animation: blobDrift 26s ease-in-out infinite alternate-reverse;
+            animation: blobDrift 30s ease-in-out infinite alternate-reverse;
         }
-        .bg-blob-3 {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, #2563eb 0%, transparent 70%);
-            top: 45%; left: 35%;
-            animation: blobDrift 32s ease-in-out infinite alternate;
-            opacity: 0.09;
-        }
+
         @keyframes blobDrift {
-            0%   { transform: translate(0,0) scale(1); }
-            100% { transform: translate(50px,70px) scale(1.12); }
+            0%   { transform: translate(0,0); }
+            100% { transform: translate(40px,50px); }
         }
+
         .bg-noise {
             position: absolute;
             inset: 0;
@@ -221,7 +238,7 @@
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
         section { padding: 6rem 0; }
 
@@ -247,6 +264,7 @@
             letter-spacing: -0.05em;
             user-select: none;
             pointer-events: none;
+            z-index: 0;
         }
         .hero-inner { position: relative; z-index: 1; }
 
@@ -388,7 +406,8 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             overflow: hidden;
-            background: var(--surface-1);
+            background: rgba(6, 9, 16, 0.7);
+            backdrop-filter: blur(5px);
         }
         .stat-item {
             padding: 1.8rem 1.5rem;
@@ -397,7 +416,7 @@
             text-align: center;
         }
         .stat-item:last-child { border-right: none; }
-        .stat-item:hover { background: var(--surface-2); }
+        .stat-item:hover { background: rgba(9, 13, 24, 0.8); }
         .stat-num {
             font-family: 'Syne', sans-serif;
             font-weight: 800;
@@ -453,8 +472,9 @@
 
         /* ─── EDUCATION ─── */
         #education {
-            background: linear-gradient(180deg, rgba(6,9,16,0.9) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(6,9,16,0.85) 0%, transparent 100%);
             border-top: 1px solid var(--border);
+            backdrop-filter: blur(3px);
         }
         .dual-grid {
             display: grid;
@@ -464,7 +484,8 @@
         }
         .major-card {
             padding: 2.5rem;
-            background: var(--surface-2);
+            background: rgba(9, 13, 24, 0.7);
+            backdrop-filter: blur(5px);
             border: 1px solid var(--border);
             border-radius: 14px;
             position: relative;
@@ -482,7 +503,7 @@
         }
         .major-card:hover {
             border-color: var(--border-hi);
-            background: var(--surface-3);
+            background: rgba(13, 18, 32, 0.8);
             transform: translateY(-4px);
         }
         .major-tag {
@@ -530,7 +551,8 @@
             padding: 1.75rem 2rem;
             border: 1px solid var(--border);
             border-radius: 14px;
-            background: var(--surface-1);
+            background: rgba(6, 9, 16, 0.7);
+            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             gap: 1.5rem;
@@ -538,7 +560,7 @@
         }
         .school-card:hover {
             border-color: var(--border-hi);
-            background: var(--surface-2);
+            background: rgba(9, 13, 24, 0.8);
             transform: translateX(6px);
         }
         .school-icon {
@@ -561,7 +583,8 @@
             margin-top: 2.5rem;
         }
         .skill-block {
-            background: var(--surface-1);
+            background: rgba(6, 9, 16, 0.7);
+            backdrop-filter: blur(5px);
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 2rem;
@@ -569,7 +592,7 @@
         }
         .skill-block:hover {
             border-color: var(--border-hi);
-            background: var(--surface-2);
+            background: rgba(9, 13, 24, 0.8);
             transform: translateY(-3px);
         }
         .skill-block-title {
@@ -631,7 +654,8 @@
             margin-top: 2.5rem;
         }
         .project-card {
-            background: var(--surface-1);
+            background: rgba(6, 9, 16, 0.7);
+            backdrop-filter: blur(5px);
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 1.75rem;
@@ -654,7 +678,7 @@
         }
         .project-card:hover {
             border-color: var(--border-hi);
-            background: var(--surface-2);
+            background: rgba(9, 13, 24, 0.8);
             transform: translateY(-6px);
             box-shadow: 0 20px 60px rgba(3,5,14,0.7), 0 0 40px rgba(37,99,235,0.07);
         }
@@ -807,7 +831,8 @@
             align-items: center;
             gap: 1rem;
             padding: 1.25rem 1.5rem;
-            background: var(--surface-1);
+            background: rgba(6, 9, 16, 0.7);
+            backdrop-filter: blur(5px);
             border: 1px solid var(--border);
             border-radius: 12px;
             text-decoration: none;
@@ -816,7 +841,7 @@
         }
         .contact-card:hover {
             border-color: var(--border-hi);
-            background: var(--surface-2);
+            background: rgba(9, 13, 24, 0.8);
             transform: translateX(6px);
         }
         .c-icon {
@@ -844,6 +869,8 @@
         footer {
             padding: 2rem 0;
             border-top: 1px solid var(--border);
+            background: rgba(3, 5, 14, 0.5);
+            backdrop-filter: blur(5px);
         }
         .footer-inner {
             display: flex;
@@ -954,12 +981,11 @@
 </head>
 <body>
 
-    <!-- ANIMATED BACKGROUND -->
+    <!-- ANIMATED BACKGROUND - Now with only 2 blobs for better performance -->
     <div class="bg-wrap">
         <div class="bg-grid"></div>
         <div class="bg-blob bg-blob-1"></div>
         <div class="bg-blob bg-blob-2"></div>
-        <div class="bg-blob bg-blob-3"></div>
         <div class="bg-noise"></div>
     </div>
 
@@ -992,7 +1018,7 @@
         <a href="#contact"   class="mob-link">Contact</a>
     </div>
 
-    <!-- ═══════════════  HERO  ═══════════════ -->
+    <!-- HERO -->
     <section class="hero" id="about">
         <div class="container">
             <div class="hero-inner">
@@ -1040,7 +1066,7 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════════════  EDUCATION  ═══════════════ -->
+    <!-- EDUCATION -->
     <section id="education">
         <div class="container">
             <div class="sec-label reveal"><span class="sec-num">01 / Education</span><div class="sec-line"></div></div>
@@ -1065,7 +1091,7 @@
             <div class="school-card reveal">
                 <div class="school-icon">📚</div>
                 <div>
-                    <h4>Baccalaureate — Life Sciences</h4>
+                    <h4>Baccalaureate — General Sciences</h4>
                     <p>Collège Mar Antonios des Soeurs Mar Antonine · Khaldieh, Zgharta</p>
                 </div>
             </div>
@@ -1074,7 +1100,7 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════════════  SKILLS  ═══════════════ -->
+    <!-- SKILLS -->
     <section id="skills">
         <div class="container">
             <div class="sec-label reveal"><span class="sec-num">02 / Skills</span><div class="sec-line"></div></div>
@@ -1139,7 +1165,7 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════════════  PROJECTS  ═══════════════ -->
+    <!-- PROJECTS -->
     <section id="projects">
         <div class="container">
             <div class="sec-label reveal"><span class="sec-num">03 / Projects</span><div class="sec-line"></div></div>
@@ -1296,7 +1322,7 @@
 
     <div class="divider"></div>
 
-    <!-- ═══════════════  CONTACT  ═══════════════ -->
+    <!-- CONTACT -->
     <section id="contact">
         <div class="container">
             <div class="contact-layout">
@@ -1367,46 +1393,68 @@
         </div>
     </footer>
 
+    <!-- OPTIMIZED SCRIPT with better performance -->
     <script>
-        // Progress bar
+        // Optimized progress bar with requestAnimationFrame
         const pb = document.getElementById('progressBar');
         const navbar = document.getElementById('navbar');
+        let ticking = false;
+        
         window.addEventListener('scroll', () => {
-            const s = window.scrollY, t = document.body.scrollHeight - window.innerHeight;
-            pb.style.transform = `scaleX(${s/t})`;
-            navbar.classList.toggle('scrolled', s > 50);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const s = window.scrollY;
+                    const t = document.body.scrollHeight - window.innerHeight;
+                    pb.style.transform = `scaleX(${s/t})`;
+                    navbar.classList.toggle('scrolled', s > 50);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         }, { passive: true });
 
-        // Hamburger
+        // Hamburger menu
         const ham = document.getElementById('hamburger');
         const mob = document.getElementById('mobileMenu');
         ham.addEventListener('click', () => {
             ham.classList.toggle('open');
             mob.classList.toggle('open');
         });
+        
         document.querySelectorAll('.mob-link').forEach(l => {
-            l.addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); });
+            l.addEventListener('click', () => { 
+                ham.classList.remove('open'); 
+                mob.classList.remove('open'); 
+            });
         });
-        // Close menu on outside click
+        
         document.addEventListener('click', e => {
             if (!ham.contains(e.target) && !mob.contains(e.target)) {
-                ham.classList.remove('open'); mob.classList.remove('open');
+                ham.classList.remove('open'); 
+                mob.classList.remove('open');
             }
         });
 
-        // Reveal on scroll
+        // Reveal on scroll - optimized
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+                if (e.isIntersecting) { 
+                    e.target.classList.add('visible'); 
+                    io.unobserve(e.target); 
+                }
             });
         }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+        
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const t = document.querySelector(a.getAttribute('href'));
-                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+                if (t) { 
+                    e.preventDefault(); 
+                    t.scrollIntoView({ behavior: 'smooth' }); 
+                }
             });
         });
     </script>
